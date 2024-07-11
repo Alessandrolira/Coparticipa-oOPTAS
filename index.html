@@ -25,7 +25,7 @@
     <section class="Filtro_dos_dados">
         <header class="cabecalho">
             <ul class="cabecalho_menu">
-                <a href="https://www.instagram.com/optasconsultoria/" class="cabecalho_menu-home--link">
+                <a href="https://optasconsultoria.com.br/" class="cabecalho_menu-home--link">
                     <li class="cabecalho_menu-home">Home</li>
                 </a>
                 <!--<a href="#" class="cabecaho_login--administrador visible-mobile"><img src="./assets/imagem/Login-mobile.png" alt="Login Administrados" class="cabecalho_login--administrador--img"></a>
@@ -36,7 +36,7 @@
             </ul>
         </header>
 
-        <h1 class="titulo">Calculo de Comparticipação</h1>
+        <h1 class="titulo">Calculo de Coparticipação</h1>
 
         <div class="formularioDeEnvio">
 
@@ -79,6 +79,8 @@
                         <label for="checkbox1" class="checkboxLabel">Seguros Unimed</label><br>
                         <input type="checkbox" id="checkboxSulamerica" name="checkbox1" class="checkbox" value="Sulamerica" onchange="mostrarPlanos()">
                         <label for="checkbox1" class="checkboxLabel">Sulamerica</label><br>
+                        <input type="checkbox" id="checkboxNotreDame_Intermedica" name="checkbox1" class="checkbox" value="NotreDame Intermedica" onchange="mostrarPlanos()">
+                        <label for="checkbox1" class="checkboxLabel">NotreDame Intermédica</label><br>
                         <!-- Adicione mais checkboxes conforme necessário -->
                     </div>
                 </div>
@@ -89,6 +91,16 @@
                     <h2 class="formularioDeEnvio_Procedimentos--titulo">Produtos</h2>
                     <div class="formularioDeEnvio_Procedimentos--quadro">
                         <div class="caixa-checkboxes" id="planosCheckbox" style="display: block;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form action="" class="formularioDeEnvio_Procedimentos" id="Planos">
+                <div class="formularioDeEnvio_Procedimentos_filho" id="porcentagemContainer">
+                    <h2 class="formularioDeEnvio_Procedimentos--titulo">Porcentagens</h2>
+                    <div class="formularioDeEnvio_Procedimentos--quadro">
+                        <div class="caixa-checkboxes" id="porcentagemCheckbox" style="display: block;">
                         </div>
                     </div>
                 </div>
@@ -148,7 +160,6 @@
             <div class="tabelas" id="tabelas3"></div>
             <div class="tabelas" id="tabelas4"></div>
             
-        <div class="tabelas" id="tabelas"></div>
         <hr>
     </section>
     <button onclick="gerarPDF()" class="Botao_Gerar_PDF">Gerar PDF</button>

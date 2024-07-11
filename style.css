@@ -215,7 +215,7 @@
     }
 
     .cabecalho_menu-home--link:hover, .cabecalho_menu-login--link:hover{
-        color: orange;
+        color: #1a3f7c;
         transform: scale(1.2);
     }
 
@@ -235,7 +235,7 @@
     }
 
     .formularioDeEnvio_Procedimentos{
-        width: 30%;
+        width: 22%;
     }
 
     .formularioDeEnvio {
