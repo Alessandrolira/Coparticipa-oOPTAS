@@ -820,7 +820,9 @@ function EnviarDados() {
                                 <h1 class="Titulo__tabela-Operadora">${resultado.operadora.replace(/_/g, " ")}</h1>
                                 <h2 class="Titulo__tabela-Plano">${checkedValuesPlanos[y].replace(/_/g, " ").replace(" por cento", "%")}</h2>
                             </div>
-                            <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                            <div>                
+                                <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                            </div>
                         </div>
                         <tr class="
                         ">
@@ -917,14 +919,61 @@ function EnviarDados() {
 
             TotalGasto = parseFloat(valorPagoConsulta) + parseFloat(valorPagoExamesEspeciais) + parseFloat(valorPagoExamesSimples) + parseFloat(valorPagoInternacao) + parseFloat(valorPagoProntoSocorro) + parseFloat(valorPagoTerapias);
 
-            document.getElementById('tabelas' + contar_porcentagem).innerHTML = `
+            let atingiuLimitador = false
+
+            if (resultado.operadora.replace(/_/g, " ") == "Seguros Unimed"){
+
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "COMPACTO"){
+                    if (TotalGasto > 350.00) {
+                        TotalGasto = 350.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "COMPLETO"){
+                    if (TotalGasto > 350.00) {
+                        TotalGasto = 350.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "EFETIVO"){
+                    if (TotalGasto > 400.00) {
+                        TotalGasto = 400.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SÊNIOR"){
+                    if (TotalGasto > 450.00) {
+                        TotalGasto = 450.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR"){
+                    if (TotalGasto > 530.00) {
+                        TotalGasto = 530.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR PLUS"){
+                    if (TotalGasto > 680.00) {
+                        TotalGasto = 680.00
+                        atingiuLimitador = true
+                    }
+                }
+            }
+
+            let HTML = `
                     <table class="TabelaValores--Operadora">
                             <div class="cabecalho-tabela">
                                 <div class="cabecalho-tabela-texto">
                                     <h1 class="Titulo__tabela-Operadora">${resultado.operadora.replace(/_/g, " ")}</h1>
                                     <h2 class="Titulo__tabela-Plano">${checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/")}</h2>
                                 </div>
-                                <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                                <div id="limitadorMensal">
+                                    ${atingiuLimitador == true? 
+                                    '<h1 class="valorTotalGasto" style="color: red; text-align: right; display: block;" id="limitador">Limitador Mensal</h1>' 
+                                    : ''}
+                                    <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                                </div>
                             </div>
                             <tr class="
                             ">
@@ -997,6 +1046,12 @@ function EnviarDados() {
             contar_porcentagem = contar_porcentagem + 1
             tabelasAnteriores = checkedValues
             porcentagemAnteriores = checkedValuesPlanos
+
+            console.log(resultado.operadora.replace(/_/g, " "))
+
+            //Ta gerando na hora errada
+
+            document.getElementById('tabelas' + contar_porcentagem).innerHTML = HTML
     }
 }
 
