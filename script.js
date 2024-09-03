@@ -1079,8 +1079,8 @@ function EnviarDados() {
                     }
                 }
                 if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SÊNIOR"){
-                    if (TotalGasto > 450.00) {
-                        TotalGasto = 450.00
+                    if (TotalGasto > 680.00) {
+                        TotalGasto = 680.00
                         atingiuLimitador = true
                     }
                 }
