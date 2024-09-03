@@ -40,6 +40,32 @@ function gerarPDF() {
 
 //DADOS
 const valoresProcedimentos = {
+    Alice: {
+        Equilíbrio: {
+            Consulta: 45,
+            Exames_Especiais: 90,
+            Exames_Simples: 10,
+            Internação: 210,
+            Pronto_Socorro: 60,
+            Terapia: 35
+        },
+        Conforto: {
+            Consulta: 70,
+            Exames_Especiais: 100,
+            Exames_Simples: 15,
+            Internação: 280,
+            Pronto_Socorro: 70,
+            Terapia: 45
+        },
+        Exclusivo: {
+            Consulta: 100,
+            Exames_Especiais: 150,
+            Exames_Simples: 30,
+            Internação: 440,
+            Pronto_Socorro: 110,
+            Terapia: 60
+        }
+    },
     Omint: {
         SC1: {
             Consulta: 75,
@@ -440,6 +466,72 @@ const valoresProcedimentos = {
             Terapia: 120
         },
     },
+    Sami: {
+        Essencial_Zona_Leste_Preferencial: {
+            Consulta: 25,
+            Exames_Especiais: 70,
+            Exames_Simples: 25,
+            Internação: 70,
+            Pronto_Socorro: 70,
+            Terapia: 25
+        },
+        Essencial_Zona_Leste_Credenciada: {
+            Consulta: 25,
+            Exames_Especiais: 70,
+            Exames_Simples: 25,
+            Internação: 70,
+            Pronto_Socorro: 70,
+            Terapia: 25
+        },
+        Orion_Preferencial: {
+            Consulta: 20,
+            Exames_Especiais: 40,
+            Exames_Simples: 20,
+            Internação: 80,
+            Pronto_Socorro: 80,
+            Terapia: 20
+        },
+        Orion_Credenciada: {
+            Consulta: 20,
+            Exames_Especiais: 50,
+            Exames_Simples: 30,
+            Internação: 160,
+            Pronto_Socorro: 130,
+            Terapia: 20
+        },
+        Celeste_Preferencial: {
+            Consulta: 40,
+            Exames_Especiais: 50,
+            Exames_Simples: 25,
+            Internação: 150,
+            Pronto_Socorro: 90,
+            Terapia: 25
+        },
+        Celeste_Credenciada: {
+            Consulta: 40,
+            Exames_Especiais: 60,
+            Exames_Simples: 35,
+            Internação: 250,
+            Pronto_Socorro: 140,
+            Terapia: 25
+        },
+        Coral_Preferencial: {
+            Consulta: 40,
+            Exames_Especiais: 60,
+            Exames_Simples: 25,
+            Internação: 200,
+            Pronto_Socorro: 110,
+            Terapia: 25
+        },
+        Coral_Credenciada: {
+            Consulta: 40,
+            Exames_Especiais: 80,
+            Exames_Simples: 35,
+            Internação: 350,
+            Pronto_Socorro: 160,
+            Terapia: 25
+        }
+    },
     Seguros_Unimed: {
         COMPACTO: {
             Consulta: 38,
@@ -541,49 +633,90 @@ const valoresProcedimentos = {
         }
     },
     NotreDame_Intermedica: {
-        Linha_Smart: {
-            Consulta: 26,
-            Exames_Especiais: 105,
-            Exames_Simples: 21,
+        Ambulatorial: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
             Internação: 185,
-            Pronto_Socorro: 52,
-            Terapia: 83
+            Pronto_Socorro: 53,
+            Terapia: 37.01
         },
-        Linha_500: {
-            Consulta: 31,
-            Exames_Especiais: 115,
-            Exames_Simples: 26,
+        Smart_150_ao_200_UP: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 185,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        },
+        Smart_300_ao_500: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
             Internação: 260,
-            Pronto_Socorro: 62,
-            Terapia: 83
+            Pronto_Socorro: 53,
+            Terapia: 37.01
         },
-        Linha_700: {
-            Consulta: 36,
-            Exames_Especiais: 125,
-            Exames_Simples: 31,
+        Advance_600_e_700: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
             Internação: 310,
-            Pronto_Socorro: 72,
-            Terapia: 93
+            Pronto_Socorro: 53,
+            Terapia: 37.01
         },
-        Linha_900: {
-            Consulta: 43,
-            Exames_Especiais: 140,
-            Exames_Simples: 38,
+        Premium_900: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
             Internação: 540,
-            Pronto_Socorro: 80,
-            Terapia: 110
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        }
+    },
+    Blue: {
+        Blue_Start_E: {
+            Consulta: 49,
+            Exames_Especiais: 146.20,
+            Exames_Simples: 50,
+            Internação: 250,
+            Pronto_Socorro: 98,
+            Terapia: 50
+        },
+        Blue_Start_A: {
+            Consulta: 49,
+            Exames_Especiais: 146.20,
+            Exames_Simples: 50,
+            Internação: 250,
+            Pronto_Socorro: 98,
+            Terapia: 50
+        }
+    },
+    Santa_Helena: {
+        Diamante_II_E: {
+            Consulta: 25,
+            Exames_Especiais: 100,
+            Exames_Simples: 20,
+            Internação: 180,
+            Pronto_Socorro: 50,
+            Terapia: 50
         }
     }
+    
 }
 
 const planosPorOperadora = {
+    Sami: ["Essencial_Zona_Leste", "Orion", "Celeste", "Coral"],
+    Santa: ["Diamante_II_E"],
+    Alice: ["Equilíbrio", "Conforto", "Exclusivo"],
     Omint: ["SC1", "C16", "C19"],
     Amil: ["Amil_Fácil_110", "Amil_Fácil_S60_e_S80", "Amil_One_S2500", "Amil_One_S6500_R1", "Amil_S380", "Amil_S450_e_S580", "Amil_S750"],
-    Bradesco: ["FECXbFCER_E_e_FQCXbFCQR_A_", "TN1IbTERI_E_e_TN2IbTQRI_A_", "TENMbTRME_E_e_TQNMbTRMQ_A_", "TNNI_E_TNMI_A_TNMM_A_e_TNMN_A_", "TPN4_A_TPN6_A_e_TCN6_A_e_TCN8_A_e_TPN8_A_e_TCNX_A_", "TNEWbTRWE_E_e_TNQWbTRWQ_A_"],
+    Bradesco: ["FECXespcFCER_E_e_FQCXespcFCQR_A_", "TN1IespcTERI_E_e_TN2IespcTQRI_A_", "TENMespcTRME_E_e_TQNMespcTRMQ_A_", "TNNI_E_TNMI_A_TNMM_A_e_TNMN_A_", "TPN4_A_TPN6_A_e_TCN6_A_e_TCN8_A_e_TPN8_A_e_TCNX_A_", "TNEWespcTRWE_E_e_TNQWespcTRWQ_A_"],
     Porto: ["LINHA_PORTO_SAUDE_P200", "LINHA_PORTO_SAUDE_P300", "LINHA_PORTO_SAUDE_P400", "LINHA_PORTO_SAUDE_P450", "LINHA_PORTO_SAUDE_P500", "LINHA_TRADICIONAL_Bronze", "LINHA_TRADICIONAL_Prata", "LINHA_TRADICIONAL_Ouro_Mais", "LINHA_TRADICIONAL_Ouro_Max", "LINHA_TRADICIONAL_Diamante_R1", "LINHA_TRADICIONAL_Diamante_R2", "LINHA_PRO_Bronze_Pro", "LINHA_PRO_Diamente_Pro", "LINHA_PRO_Ouro_Pro", "LINHA_PRO_Prata_Pro",],
     Unimed: ["COMPACTO", "COMPLETO", "EFETIVO", "SÊNIOR", "SUPERIOR", "SUPERIOR_PLUS"],
     Sulamerica: ["Clássico", "Direto", "Especial", "Exato", "Executivo", "Prestigie"],
-    NotreDame_Intermedica: ["Linha_Smart", "Linha_500", "Linha_700", "Linha_900"]
+    NotreDame_Intermedica: ["Ambulatorial", "Smart_150_ao_200_UP", "Smart_300_ao_500", "Advance_600_e_700", "Premium_900"],
+    Blue: ["Blue_Start_A", "Blue_Start_E"]
 }
 
 const porcentagens = {
@@ -601,7 +734,11 @@ const porcentagens = {
     LINHA_PRO_Bronze_Pro: ["10_por_cento", "20_por_cento", "30_por_cento"],
     LINHA_PRO_Diamente_Pro: ["10_por_cento", "20_por_cento", "30_por_cento"],
     LINHA_PRO_Ouro_Pro: ["10_por_cento", "20_por_cento", "30_por_cento"],
-    LINHA_PRO_Prata_Pro: ["10_por_cento", "20_por_cento"]
+    LINHA_PRO_Prata_Pro: ["10_por_cento", "20_por_cento"],
+    Essencial_Zona_Leste: ["Preferencial", "Credenciada"],
+    Orion:  ["Preferencial", "Credenciada"],
+    Celeste:  ["Preferencial", "Credenciada"],
+    Coral:  ["Preferencial", "Credenciada"],
 }
 
 function mostrarPlanos() {
@@ -633,7 +770,7 @@ function mostrarPlanos() {
         planoElement.value = plano;
         planoElement.id = plano;
         planoElement.onchange = mostrarPorcentagem;
-        plano = plano.replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/")
+        plano = plano.replace(/_/g, " ").replace(" por cento", "%").replace(/espc/g, "/")
         const label = document.createElement("label");
         label.htmlFor = plano;
         label.className = "checkboxLabel"
@@ -712,7 +849,7 @@ function calcularCustoTotal(plano, consultas, examesEspeciais, examesSimples, in
     const custoTerapias = procedimentos.Terapia * terapias;
 
     // Verificar se o plano possui coparticipação (contém "por_cento" no nome)
-    const coparticipacao = plano.includes("por_cento") ? parseFloat(plano.split("_")[3]) : 0;
+    const coparticipacao = (plano.includes("por_cento") || plano.includes("Preferencial") || plano.includes("Credenciada")) ? parseFloat(plano.split("_")[3]) : 0;
     const custoTotal = custoConsultas + custoExamesEspeciais + custoExamesSimples + custoInternacoes + custoProntoSocorros + custoTerapias + (coparticipacao * consultas);
 
     return {
@@ -774,7 +911,7 @@ function EnviarDados() {
         checkedValues.push(checkbox.value);
     });
 
-    for (y = 0; y < 5; y++) {
+    for (y = 0; y < 10; y++) {
         document.getElementById('tabelas' + y).innerHTML = ''
     }
 
@@ -800,7 +937,7 @@ function EnviarDados() {
 
         for (let y = 0; y < checkedValuesPlanos.length; y++) {
 
-            if (checkedValues[x] == checkedValuesPlanos[y].replace(/_\d+_por_cento/g, "")) {
+            if (checkedValues[x] == checkedValuesPlanos[y].replace(/_\d+_por_cento/g, "").replace("_Preferencial", "").replace("_Credenciada", "")) {
 
                 resultado = calcularCustoTotal(checkedValuesPlanos[y], consultas, examesEspeciais, examesSimples, internacoes, prontoSocorros, terapias);
 
@@ -930,14 +1067,14 @@ function EnviarDados() {
                     }
                 }
                 if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "COMPLETO"){
-                    if (TotalGasto > 350.00) {
-                        TotalGasto = 350.00
+                    if (TotalGasto > 400.00) {
+                        TotalGasto = 400.00
                         atingiuLimitador = true
                     }
                 }
                 if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "EFETIVO"){
-                    if (TotalGasto > 400.00) {
-                        TotalGasto = 400.00
+                    if (TotalGasto > 350.00) {
+                        TotalGasto = 350.00
                         atingiuLimitador = true
                     }
                 }
@@ -948,14 +1085,14 @@ function EnviarDados() {
                     }
                 }
                 if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR"){
-                    if (TotalGasto > 530.00) {
-                        TotalGasto = 530.00
+                    if (TotalGasto > 450.00) {
+                        TotalGasto = 450.00
                         atingiuLimitador = true
                     }
                 }
                 if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR PLUS"){
-                    if (TotalGasto > 680.00) {
-                        TotalGasto = 680.00
+                    if (TotalGasto > 530.00) {
+                        TotalGasto = 530.00
                         atingiuLimitador = true
                     }
                 }
@@ -966,7 +1103,7 @@ function EnviarDados() {
                             <div class="cabecalho-tabela">
                                 <div class="cabecalho-tabela-texto">
                                     <h1 class="Titulo__tabela-Operadora">${resultado.operadora.replace(/_/g, " ")}</h1>
-                                    <h2 class="Titulo__tabela-Plano">${checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/")}</h2>
+                                    <h2 class="Titulo__tabela-Plano">${checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/espc/g, "/")}</h2>
                                 </div>
                                 <div id="limitadorMensal">
                                     ${atingiuLimitador == true? 
