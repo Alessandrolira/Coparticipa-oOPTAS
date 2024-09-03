@@ -151,7 +151,7 @@ const valoresProcedimentos = {
         }
     },
     Bradesco: {
-        FECXbFCER_E_e_FQCXbFCQR_A_: {
+        FECXespcFCER_E_e_FQCXespcFCQR_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
@@ -159,7 +159,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 90,
             Terapia: 30
         },
-        TN1IbTERI_E_e_TN2IbTQRI_A_: {
+        TN1IespcTERI_E_e_TN2IespcTQRI_A_: {
             Consulta: 35,
             Exames_Especiais: 140,
             Exames_Simples: 52.50,
@@ -167,7 +167,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 105,
             Terapia: 35
         },
-        TENMbTRME_E_e_TQNMbTRMQ_A_: {
+        TENMespcTRME_E_e_TQNMespcTRMQ_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
@@ -191,7 +191,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 320,
             Terapia: 160
         },
-        TNEWbTRWE_E_e_TNQWbTRWQ_A_: {
+        TNEWespcTRWE_E_e_TNQWespcTRWQ_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
