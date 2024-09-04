@@ -701,6 +701,56 @@ const valoresProcedimentos = {
             Pronto_Socorro: 50,
             Terapia: 50
         }
+    },
+    Sao_Camilo: {
+        Classic_Light_Total: {
+            Consulta: 45,
+            Exames_Especiais: 115,
+            Exames_Simples: 65,
+            Internação: 200,
+            Pronto_Socorro: 60,
+            Terapia: 8
+        },
+        Platinum_Plus_Total: {
+            Consulta: 45,
+            Exames_Especiais: 115,
+            Exames_Simples: 65,
+            Internação: 200,
+            Pronto_Socorro: 60,
+            Terapia: 8
+        },
+        Platinum_Master_Total: {
+            Consulta: 55,
+            Exames_Especiais: 135,
+            Exames_Simples: 75,
+            Internação: 300,
+            Pronto_Socorro: 90,
+            Terapia: 10
+        },
+        Classic_Light_Parcial: {
+            Consulta: 45,
+            Exames_Especiais: 115,
+            Exames_Simples: 65,
+            Internação: 0,
+            Pronto_Socorro: 60,
+            Terapia: 8
+        },
+        Classic_Master_Parcial: {
+            Consulta: 55,
+            Exames_Especiais: 135,
+            Exames_Simples: 75,
+            Internação: 0,
+            Pronto_Socorro: 90,
+            Terapia: 10
+        },
+        Platinum_Plus_Parcial: {
+            Consulta: 45,
+            Exames_Especiais: 115,
+            Exames_Simples: 65,
+            Internação: 0,
+            Pronto_Socorro: 60,
+            Terapia: 8
+        }
     }
     
 }
@@ -716,7 +766,8 @@ const planosPorOperadora = {
     Unimed: ["COMPACTO", "COMPLETO", "EFETIVO", "SÊNIOR", "SUPERIOR", "SUPERIOR_PLUS"],
     Sulamerica: ["Clássico", "Direto", "Especial", "Exato", "Executivo", "Prestigie"],
     NotreDame_Intermedica: ["Ambulatorial", "Smart_150_ao_200_UP", "Smart_300_ao_500", "Advance_600_e_700", "Premium_900"],
-    Blue: ["Blue_Start_A", "Blue_Start_E"]
+    Blue: ["Blue_Start_A", "Blue_Start_E"],
+    Sao_Camilo: ["Classic_Light", "Platinum_Plus", "Platinum_Master", "Classic_Master"]
 }
 
 const porcentagens = {
@@ -739,6 +790,10 @@ const porcentagens = {
     Orion:  ["Preferencial", "Credenciada"],
     Celeste:  ["Preferencial", "Credenciada"],
     Coral:  ["Preferencial", "Credenciada"],
+    Classic_Light: ["Total", "Parcial"],
+    Platinum_Plus: ["Total", "Parcial"],
+    Platinum_Master: ["Total"],
+    Classic_Master: ["Parcial"]
 }
 
 function mostrarPlanos() {
@@ -849,7 +904,7 @@ function calcularCustoTotal(plano, consultas, examesEspeciais, examesSimples, in
     const custoTerapias = procedimentos.Terapia * terapias;
 
     // Verificar se o plano possui coparticipação (contém "por_cento" no nome)
-    const coparticipacao = (plano.includes("por_cento") || plano.includes("Preferencial") || plano.includes("Credenciada")) ? parseFloat(plano.split("_")[3]) : 0;
+    const coparticipacao = (plano.includes("por_cento") || plano.includes("Preferencial") || plano.includes("Credenciada") || plano.includes("Total") || plano.includes("Parcial")) ? parseFloat(plano.split("_")[3]) : 0;
     const custoTotal = custoConsultas + custoExamesEspeciais + custoExamesSimples + custoInternacoes + custoProntoSocorros + custoTerapias + (coparticipacao * consultas);
 
     return {
@@ -937,7 +992,7 @@ function EnviarDados() {
 
         for (let y = 0; y < checkedValuesPlanos.length; y++) {
 
-            if (checkedValues[x] == checkedValuesPlanos[y].replace(/_\d+_por_cento/g, "").replace("_Preferencial", "").replace("_Credenciada", "")) {
+            if (checkedValues[x] == checkedValuesPlanos[y].replace(/_\d+_por_cento/g, "").replace("_Preferencial", "").replace("_Credenciada", "").replace("_Total", "").replace("_Parcial", "")) {
 
                 resultado = calcularCustoTotal(checkedValuesPlanos[y], consultas, examesEspeciais, examesSimples, internacoes, prontoSocorros, terapias);
 
